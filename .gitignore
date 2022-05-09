@@ -25,3 +25,6 @@ yarn-error.log*
 error.log
 combined.log
 *.log
+
+# resources directory
+/resources

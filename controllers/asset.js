@@ -1,1 +1,1 @@
-import assetModel from "../models/asset.js";
+import assetModel from "../models/assets.js";

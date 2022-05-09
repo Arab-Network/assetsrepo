@@ -1,9 +1,17 @@
-import { lstat, readdir } from "fs/promises";
+import { lstat, readdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { join } from "path";
 
 export const deepReadDirectories = async (dirPath) => {
   return new Promise(async (resolve, reject) => {
     try {
+      if (!existsSync(dirPath)) {
+        return reject({
+          status: "ERROR",
+          message: `[deepReadDirectories] - The requested directory doesn't exist: ${dirPath}`,
+        });
+      }
+
       const mainDir = await readdir(dirPath);
       const scanAll = await Promise.all(
         mainDir.map(async (entity) => {

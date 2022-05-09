@@ -4,7 +4,7 @@ import LoggerService from "../logger/LoggerService.js";
 
 let db = {};
 var mongoConnectionUri = {
-  server: "cluster0.yc5p3.mongodb.net",
+  server: process.env.dbserver,
   port: "27017",
   username: process.env.dbusername,
   password: process.env.dbpassword,
