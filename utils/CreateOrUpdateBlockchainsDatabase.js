@@ -4,6 +4,7 @@ import { __dirname } from "./commonUtils.js";
 import { ExtractDirectories } from "./ExtractDirectories.js";
 import { DatabaseConnect } from "../db/index.js";
 import Assets from "../models/assets.js";
+import LoggerService from "../logger/LoggerService.js";
 
 export const CreateOrUpdateBlockchainsDatabase = async (
   resetCollection = true
@@ -13,7 +14,7 @@ export const CreateOrUpdateBlockchainsDatabase = async (
 
     if (resetCollection) {
       const deleteAll = await Assets.deleteMany({});
-      console.log(
+      LoggerService.info(
         `Deleted ${deleteAll.deletedCount} documents from the collection.`
       );
     }
@@ -54,5 +55,6 @@ export const CreateOrUpdateBlockchainsDatabase = async (
 };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  await CreateOrUpdateBlockchainsDatabase(true);
+  const status = await CreateOrUpdateBlockchainsDatabase(true);
+  LoggerService.info(status);
 }

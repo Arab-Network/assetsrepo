@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "430447d9-7503-424e-9329-6799158cb942",
+		"name": "Assets API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get one asset by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/assets/:assetId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"assets",
+						":assetId"
+					],
+					"variable": [
+						{
+							"key": "assetId",
+							"value": "627b2a33b2261e8692cee251",
+							"description": "REQUIRED - The asset id (type: ObjectId)"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get one asset by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/assets/:assetId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"assets",
+								":assetId"
+							],
+							"variable": [
+								{
+									"key": "assetId",
+									"value": "627b2a33b2261e8692cee251",
+									"description": "REQUIRED - The asset id (type: ObjectId)"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1011"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f3-aBL3hT2prMG0LjQMMxYNx5SizVM\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 May 2022 04:15:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"627b2a33b2261e8692cee251\",\n    \"name\": \"Aeternity\",\n    \"website\": \"https://aeternity.com\",\n    \"description\": \"Aeternity is a blockchain platform with turing complete smart contracts. The platform implemented decentralized oracles to make it possible for decentralized applications to use real world data.\",\n    \"explorer\": \"https://www.aeknow.org/\",\n    \"research\": \"https://research.binance.com/en/projects/aeternity\",\n    \"symbol\": \"AE\",\n    \"type\": \"coin\",\n    \"decimals\": 18,\n    \"status\": \"active\",\n    \"tags\": [],\n    \"links\": [\n        {\n            \"name\": \"github\",\n            \"url\": \"https://github.com/aeternity\",\n            \"_id\": \"627b2a33b2261e8692cee252\"\n        },\n        {\n            \"name\": \"twitter\",\n            \"url\": \"https://twitter.com/aeternity\",\n            \"_id\": \"627b2a33b2261e8692cee253\"\n        },\n        {\n            \"name\": \"reddit\",\n            \"url\": \"https://reddit.com/r/Aeternity\",\n            \"_id\": \"627b2a33b2261e8692cee254\"\n        },\n        {\n            \"name\": \"whitepaper\",\n            \"url\": \"https://github.com/aeternity/white-paper/blob/master/paper.pdf\",\n            \"_id\": \"627b2a33b2261e8692cee255\"\n        }\n    ],\n    \"logoPath\": \"/resources/blockchains/aeternity/info/logo.png\",\n    \"createdAt\": \"2022-05-11T03:14:59.086Z\",\n    \"updatedAt\": \"2022-05-11T03:14:59.086Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Search for assets by name or symbol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/assets/search?q=aio&limit=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"assets",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "aio",
+							"description": "REQUIRED - Search query (minimum 3 characters)"
+						},
+						{
+							"key": "limit",
+							"value": "2",
+							"description": "OPTIONAL - Results limit (default: 10)"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search for assets by name or symbol",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/assets/search?q=aio&limit=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"assets",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "aio",
+									"description": "REQUIRED - Search query (minimum 3 characters)"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"description": "OPTIONAL - Results limit (default: 10)"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"618-pR7LH8LEaL4Xw/zNJtzyElxgexY\""
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 May 2022 04:14:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"results\": [\n        {\n            \"_id\": \"627b2a33b2261e8692cee257\",\n            \"name\": \"Aion\",\n            \"website\": \"https://theoan.com\",\n            \"description\": \"The Aion blockchain addresses the scalabilty problem. It has a bridging mechanism that makes inter-blockchain communication with data and value possible. The Aion blockchain also addresses the scalability problem with its virtual machine and enabling of applications to establish a multiple chain connection.\",\n            \"explorer\": \"https://mainnet.aion.network\",\n            \"research\": \"https://research.binance.com/en/projects/aion\",\n            \"symbol\": \"AION\",\n            \"type\": \"coin\",\n            \"decimals\": 18,\n            \"status\": \"active\",\n            \"tags\": [],\n            \"links\": [\n                {\n                    \"name\": \"github\",\n                    \"url\": \"https://github.com/aionnetwork\",\n                    \"_id\": \"627b2a33b2261e8692cee258\"\n                },\n                {\n                    \"name\": \"twitter\",\n                    \"url\": \"https://twitter.com/Aion_OAN\",\n                    \"_id\": \"627b2a33b2261e8692cee259\"\n                },\n                {\n                    \"name\": \"reddit\",\n                    \"url\": \"https://reddit.com/r/AionNetwork\",\n                    \"_id\": \"627b2a33b2261e8692cee25a\"\n                },\n                {\n                    \"name\": \"whitepaper\",\n                    \"url\": \"https://aion.network/developers/#whitepapers\",\n                    \"_id\": \"627b2a33b2261e8692cee25b\"\n                }\n            ],\n            \"logoPath\": \"/resources/blockchains/aion/info/logo.png\",\n            \"createdAt\": \"2022-05-11T03:14:59.200Z\",\n            \"updatedAt\": \"2022-05-11T03:14:59.200Z\"\n        },\n        {\n            \"_id\": \"627b2b17b2261e8692cef9df\",\n            \"name\": \"AION\",\n            \"website\": \"\",\n            \"description\": \"-\",\n            \"explorer\": \"https://etherscan.io/token/0x4ceda7906a5ed2179785cd3a40a69ee8bc99c466\",\n            \"symbol\": \"AION\",\n            \"type\": \"ERC20\",\n            \"decimals\": 8,\n            \"status\": \"active\",\n            \"tags\": [],\n            \"logoPath\": \"/resources/blockchains/ethereum/assets/0x4CEdA7906a5Ed2179785Cd3A40A69ee8bc99C466/logo.png\",\n            \"links\": [],\n            \"createdAt\": \"2022-05-11T03:18:47.738Z\",\n            \"updatedAt\": \"2022-05-11T03:18:47.738Z\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

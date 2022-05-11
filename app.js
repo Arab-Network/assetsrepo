@@ -26,7 +26,7 @@ app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use("/api/asset", routes);
+app.use("/api/assets", routes);
 
 app.listen(port, () => {
   LoggerService.info(`Server listening on port ${port}`);

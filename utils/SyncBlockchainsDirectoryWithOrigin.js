@@ -4,13 +4,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { __dirname, resourcesPath, tempRepoPath } from "./commonUtils.js";
 
-export const SyncBlockchainsDirectory = () => {
+export const SyncBlockchainsDirectoryWithOrigin = () => {
   return new Promise((resolve, reject) => {
     try {
       if (!shell.which("git")) {
         return reject({
           status: "ERROR",
-          message: '[SyncBlockchainsDirectory] - "git" is not installed.',
+          message:
+            '[SyncBlockchainsDirectoryWithOrigin] - "git" is not installed.',
         });
       }
 
@@ -29,7 +30,7 @@ export const SyncBlockchainsDirectory = () => {
       }
 
       console.time("Pulling the latest origin version");
-      console.log(
+      LoggerService.info(
         "Fetching from origin (branch: master), this process may take a while."
       );
       shell.exec("git pull origin master");
@@ -38,7 +39,7 @@ export const SyncBlockchainsDirectory = () => {
       console.time(
         'Copying "blockchains" to the main directory and deleting "blockchains_temp_fetching_repo"'
       );
-      console.log(
+      LoggerService.info(
         "Copying and deleting directories, this process may take a while."
       );
       shell.cp("-rf", path.join(tempRepoPath, "blockchains"), resourcesPath);
@@ -50,17 +51,19 @@ export const SyncBlockchainsDirectory = () => {
 
       return resolve({
         status: "SUCCESS",
-        message: "[SyncBlockchainsDirectory] - The function ran successfully.",
+        message:
+          "[SyncBlockchainsDirectoryWithOrigin] - The function ran successfully.",
       });
     } catch (e) {
       return reject({
         status: "ERROR",
-        message: `[SyncBlockchainsDirectory] - ${e.message}`,
+        message: `[SyncBlockchainsDirectoryWithOrigin] - ${e.message}`,
       });
     }
   });
 };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  await SyncBlockchainsDirectory();
+  const status = await SyncBlockchainsDirectoryWithOrigin();
+  LoggerService.info(status);
 }

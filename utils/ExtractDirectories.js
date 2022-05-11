@@ -46,12 +46,6 @@ export const ExtractDirectories = async (type = "json") => {
 };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  ExtractDirectories("file").then(() => {
-    return console.log(
-      `[ExtractDirectories] - extracted the directories successfully under: ${path.join(
-        resourcesPath,
-        "directories.json"
-      )}`
-    );
-  });
+  const status = ExtractDirectories("file");
+  LoggerService.info(status);
 }
