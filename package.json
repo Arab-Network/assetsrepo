@@ -8,7 +8,9 @@
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "init:blockchains_dir": "node ./utils/SyncBlockchainsDirectoryWithOrigin.js",
+    "init:blockchains_db": "node ./utils/CreateOrUpdateBlockchainsDatabase.js"
   },
   "dependencies": {
     "compression": "^1.7.4",

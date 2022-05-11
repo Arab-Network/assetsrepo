@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { deepReadDirectories } from "./deepReadDirectories.js";
 import { __dirname, resourcesPath } from "./commonUtils.js";
+import LoggerService from "../logger/LoggerService.js";
 
 export const ExtractDirectories = async (type = "json") => {
   try {
@@ -20,7 +21,7 @@ export const ExtractDirectories = async (type = "json") => {
       return {
         status: "ERROR",
         message:
-          '[ExtractDirectories] - "jq" is not installed and is required for formatting (sudo apt-get install jq).',
+          '[ExtractDirectories] - "jq" is not installed and is required for formatting.',
       };
     }
 

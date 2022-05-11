@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { __dirname, resourcesPath, tempRepoPath } from "./commonUtils.js";
+import LoggerService from "../logger/LoggerService.js";
 
 export const SyncBlockchainsDirectoryWithOrigin = () => {
   return new Promise((resolve, reject) => {
