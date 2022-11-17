@@ -23,20 +23,26 @@ export const CreateOrUpdateBlockchainsDatabase = async (
 
     console.time("Adding items to the database");
     for (const infoFile of directories) {
-      const directory = infoFile.split("\\").slice(0, -1).join("/");
-      const infoFileData = JSON.parse(fs.readFileSync(infoFile));
-      if (fs.existsSync(directory + "/logo.png")) {
-        infoFileData.logoPath =
-          directory.replace(__dirname.split("\\").join("/"), "") + "/logo.png";
-      }
+      try {
+        const directory = infoFile.split("/").slice(0, -1).join("/");
+        console.log({ directory });
 
-      process.stdout.clearLine(0);
-      process.stdout.cursorTo(0);
-      process.stdout.write((directories.indexOf(infoFile) + 1).toString());
-      process.stdout.cursorTo(6);
-      process.stdout.write(directory);
+        const infoFileData = JSON.parse(fs.readFileSync(infoFile));
+        if (fs.existsSync(directory + "/logo.png")) {
+          infoFileData.logoPath =
+            directory.replace(__dirname.split("\\").join("/"), "") +
+            "/logo.png";
+        }
 
-      await Assets.create(infoFileData);
+        process.stdout.clearLine(0);
+        process.stdout.cursorTo(0);
+        process.stdout.write((directories.indexOf(infoFile) + 1).toString());
+        process.stdout.cursorTo(6);
+        process.stdout.write(directory);
+
+        console.log({ infoFileData });
+        await Assets.create(infoFileData);
+      } catch {}
     }
     process.stdout.write("\n");
     console.timeEnd("Adding items to the database");

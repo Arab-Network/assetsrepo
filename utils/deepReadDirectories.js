@@ -18,10 +18,7 @@ export const deepReadDirectories = async (dirPath) => {
           const currentPath = join(dirPath, entity);
           return (await lstat(currentPath)).isDirectory()
             ? await deepReadDirectories(currentPath)
-            : (currentPath.includes("\\info\\") |
-                (currentPath.includes("\\assets\\") &
-                  !currentPath.includes("\\validators\\"))) &
-              !currentPath.includes("\\logo.")
+            : currentPath.includes("/assets/")
             ? currentPath
             : [];
         })

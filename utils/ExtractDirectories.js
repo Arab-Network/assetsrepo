@@ -8,9 +8,8 @@ import LoggerService from "../logger/LoggerService.js";
 
 export const ExtractDirectories = async (type = "json") => {
   try {
-    const jsonFilesList = await deepReadDirectories(
-      path.join(resourcesPath, "blockchains")
-    );
+    const pathFolder = path.join(resourcesPath, "blockchains");
+    const jsonFilesList = await deepReadDirectories(pathFolder);
     const flattenedFilesList = jsonFilesList.flat(Number.POSITIVE_INFINITY);
 
     if (type === "json") {
@@ -47,6 +46,6 @@ export const ExtractDirectories = async (type = "json") => {
 };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const status = ExtractDirectories("file");
+  const status = await ExtractDirectories("file");
   LoggerService.info(status);
 }

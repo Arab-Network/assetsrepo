@@ -13,11 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://abcdarab.com",
-      "https://arabgatewallet.com",
-      "https://arabnetwork.org",
-    ],
+    origin: ["*"],
     optionsSuccessStatus: 200,
   })
 );

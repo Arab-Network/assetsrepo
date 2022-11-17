@@ -7,18 +7,17 @@ const assetModel = new Schema(
     website: String,
     description: String,
     explorer: String,
-    research: String,
+    research: { type: String, required: false },
     symbol: String,
     type: String,
     decimals: Number,
     status: String,
     tags: [String],
     links: [{ name: String, url: String }],
-    tokenId: String,
+    id: String,
     logoPath: String,
   },
   {
-    versionKey: false,
     timestamps: true,
   }
 );
